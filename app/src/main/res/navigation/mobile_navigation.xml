@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.blackapp.market.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_itemsFragment"
+            app:destination="@id/itemsFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_itemDetailsFragment"
+            app:destination="@id/itemDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_classification"
+        android:name="com.blackapp.market.ui.classification.ClassificationFragment"
+        android:label="@string/menu_classification"
+        tools:layout="@layout/fragment_classification" >
+        <action
+            android:id="@+id/action_nav_classification_to_itemsFragment"
+            app:destination="@id/itemsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.blackapp.market.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/itemsFragment"
+        android:name="com.blackapp.market.ui.items.ItemsFragment"
+        android:label="Items"
+        tools:layout="@layout/fragment_items" >
+        <action
+            android:id="@+id/action_itemsFragment_to_nav_home"
+            app:destination="@id/nav_home" />
+        <argument
+            android:name="Classification"
+            app:argType="com.blackapp.market.api.model.M_Classification" />
+        <action
+            android:id="@+id/action_itemsFragment_to_itemDetailsFragment"
+            app:destination="@id/itemDetailsFragment" />
+        <action
+            android:id="@+id/action_itemsFragment_to_nav_classification"
+            app:destination="@id/nav_classification" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemDetailsFragment"
+        android:name="com.blackapp.market.ui.items.ItemDetailsFragment"
+        android:label="ItemDetailsFragment" >
+        <action
+            android:id="@+id/action_itemDetailsFragment_to_itemsFragment"
+            app:destination="@id/itemsFragment" />
+        <action
+            android:id="@+id/action_itemDetailsFragment_to_nav_home"
+            app:destination="@id/nav_home" />
+        <argument
+            android:name="Item"
+            app:argType="com.blackapp.market.api.model.M_Items" />
+    </fragment>
+</navigation>
